@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -11,14 +12,18 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
+import { createTopic } from "@/actions/createTopics";
+import { useActionState } from "react";
 
 const TopicCreateForm = () => {
+  const [formstate, action] = useActionState(createTopic, { errors: {} });
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button>New topic</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
+        <form action={action}>
         <DialogHeader>
           <DialogTitle className="text-center">Create a topic</DialogTitle>
           <DialogDescription className="text-center">
@@ -32,16 +37,38 @@ const TopicCreateForm = () => {
             </Label>
             <Input id="name" name="name"/>
           </div>
+          {
+            formstate.errors.name && (
+              <p className="text-red-500 text-sm mt-1">
+                {formstate.errors.name}
+              </p>
+            )
+          }
           <div>
             <Label htmlFor="description">
               Description
             </Label>
             <Textarea id="description" name="description"/>
           </div>
+          {
+            formstate.errors.description && (
+              <p className="text-red-500 text-sm mt-1">
+                {formstate.errors.description}
+              </p>
+            )
+          }
+          {
+            formstate.errors.formError && (
+              <div className="mt-2 rounded-lg border border-red-500 bg-red-100 p-3 text-red-700 text-sm font-medium">
+                {formstate.errors.formError}
+              </div>
+            )
+          }
         </div>
         <DialogFooter>
-          <Button type="submit" className="w-full">Save changes</Button>
+          <Button type="submit" className="w-full mt-2">Save changes</Button>
         </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   )

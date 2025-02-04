@@ -13,6 +13,8 @@ const AuthHeader = () => {
   const session = useSession();
   let authContent: React.ReactNode;
 
+  if(session.status === "loading") return null;
+
   if (session?.data?.user) {
     authContent = (
       <Popover>
