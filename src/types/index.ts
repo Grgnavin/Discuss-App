@@ -1,3 +1,5 @@
+import type { Post } from "@prisma/client";
+
 export type CreateTopicFormSatate = {
     errors: {
         name?: string[];
@@ -19,5 +21,21 @@ export type CreatePostFormState = {
 }
 
 export type CreatePostFormProps = {
-    params: Promise<{ id: string }>
+    slug: string 
+}
+
+export type PostWithData = Post & {
+    user: {
+        name: string | null;
+    },
+    topic: {
+        slug: string
+    },
+    _count: {
+        comments: number
+    }
+}
+
+export type PostListProps = {
+    fetchData: () => Promise<PostWithData[]>
 }

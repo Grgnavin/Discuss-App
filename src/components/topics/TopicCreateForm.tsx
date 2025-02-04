@@ -30,7 +30,7 @@ const TopicCreateForm = () => {
             Write a new topic to start discussion. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
-        <div>
+        <div className="space-y-4">
           <div>
             <Label htmlFor="name">
               Name

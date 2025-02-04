@@ -1,10 +1,8 @@
-import { CreatePostFormProps } from '@/types'
 import React from 'react'
 
-const PostshowPage: React.FC<CreatePostFormProps> =async ({ params }) => {
-  const { id } = (await params);
+const PostshowPage: React.FC =async () => {
   return (
-    <div>The id is: {id}</div>
+    <div>The id is: </div>
   )
 }
 
