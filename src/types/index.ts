@@ -5,3 +5,19 @@ export type CreateTopicFormSatate = {
         formError?: string[]
     },
 }
+
+export type TopicShowPageProps = {
+    params: Promise<{ slug: string }>
+}
+
+export type CreatePostFormState = {
+    errors: {
+        title?: string[];
+        content?: string[];
+        formError?: string[] 
+    }
+}
+
+export type CreatePostFormProps = {
+    params: Promise<{ id: string }>
+}

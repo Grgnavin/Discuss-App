@@ -1,16 +1,11 @@
 "use server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib";
+import { createTopicSchame } from "@/schemas";
 import { CreateTopicFormSatate } from "@/types";
 import { Topic } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import {z} from "zod";
-
-const createTopicSchame = z.object({
-    name: z.string().min(3).regex(/^[a-z-]+$/, { message: "Must be lowercase without spaces" }),
-    description: z.string().min(10, "Description must be at least 10 characters long"),
-})
 
 export const createTopic = async (prevState: CreateTopicFormSatate, formdata: FormData): Promise<CreateTopicFormSatate> => {
 
