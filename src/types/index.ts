@@ -39,3 +39,11 @@ export type PostWithData = Post & {
 export type PostListProps = {
     fetchData: () => Promise<PostWithData[]>
 }
+
+export type PostShowPageProps = {
+    params: Promise<{ slug: string, postid: string }>
+}
+
+export type PostShowProps = {
+    postId: string,
+}
