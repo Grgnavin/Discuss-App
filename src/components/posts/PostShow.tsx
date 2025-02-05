@@ -17,7 +17,7 @@ const PostShow: React.FC<PostShowProps> =async ({ postId }) => {
     <div >
         <h1 className='text-center font-bold my-2 text-2xl'>{post.title}</h1>
         <p className='border rounded p-4'>{post.content}</p>
-        <CommentCreateForm />
+        <CommentCreateForm postId={postId} startOpen />
     </div>
   )
 }

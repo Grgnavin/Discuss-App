@@ -47,3 +47,16 @@ export type PostShowPageProps = {
 export type PostShowProps = {
     postId: string,
 }
+
+export type CreateCommentState = {
+    errors: {
+        content?: string[],
+        formError?: string[] 
+    }
+}
+
+export type CommentCreateFormProps = {
+    postId: string,
+    parentId?: string,
+    startOpen?: boolean
+}
