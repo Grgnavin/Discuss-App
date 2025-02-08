@@ -11,7 +11,7 @@ const CommentCreateForm: React.FC<CommentCreateFormProps> = ({
     parentId, 
     startOpen 
 }) => {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
   const [formState, action, isPending] = useActionState(createComment.bind(null, { postId, parentId }), { errors: {} });
   return (
     <div className="p-1">

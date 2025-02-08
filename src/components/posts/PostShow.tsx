@@ -3,6 +3,7 @@ import { PostShowProps } from '@/types'
 import { notFound } from 'next/navigation';
 import React from 'react'
 import CommentCreateForm from '../comments/CommentCreateForm';
+import CommentList from '../comments/CommentList';
 
 const PostShow: React.FC<PostShowProps> =async ({ postId }) => {
   const post = await prisma.post.findFirst({
@@ -18,6 +19,7 @@ const PostShow: React.FC<PostShowProps> =async ({ postId }) => {
         <h1 className='text-center font-bold my-2 text-2xl'>{post.title}</h1>
         <p className='border rounded p-4'>{post.content}</p>
         <CommentCreateForm postId={postId} startOpen />
+        <CommentList postId={postId} />
     </div>
   )
 }
